@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) trigger_error('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH'))  trigger_error('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -65,12 +65,7 @@ class CI_DB_mysql_driver extends CI_DB {
 	 */
 	function db_connect()
 	{
-		if ($this->port != '')
-		{
-			$this->hostname .= ':'.$this->port;
-		}
-
-		return mysql_connect($this->hostname, $this->username, $this->password, TRUE);
+		return db_pconnect();
 	}
 
 	// --------------------------------------------------------------------

@@ -77,7 +77,7 @@ class CI_DB_oci8_driver extends CI_DB {
      */
     public function db_connect()
     {
-        return oci_connect($this->username, $this->password, $this->hostname, $this->char_set);
+        return db_pconnect();
     }
     
     // --------------------------------------------------------------------

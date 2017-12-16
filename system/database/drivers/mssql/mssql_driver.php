@@ -55,12 +55,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function db_connect()
 	{
-		if ($this->port != '')
-		{
-			$this->hostname .= ','.$this->port;
-		}
-
-		return mssql_connect($this->hostname, $this->username, $this->password);
+		return db_pconnect();
 	}
 
 	// --------------------------------------------------------------------
