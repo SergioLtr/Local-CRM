@@ -48,7 +48,7 @@
  *  Load the global functions
  * ------------------------------------------------------
  */
-	require(BASEPATH.'core/Common.php');
+	require BASEPATH.'core/Common.php';
 
 /*
  * ------------------------------------------------------
@@ -57,11 +57,11 @@
  */
 	if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/constants.php'))
 	{
-		require(APPPATH.'config/'.ENVIRONMENT.'/constants.php');
+		require APPPATH.'config/'.ENVIRONMENT.'/constants.php';
 	}
 	else
 	{
-		require(APPPATH.'config/constants.php');
+		require APPPATH.'config/constants.php';
 	}
 
 /*
@@ -247,7 +247,7 @@
 		show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
 	}
 
-	include(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php');
+	include APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php';
 
 	// Set a mark point for benchmarking
 	$BM->mark('loading_time:_base_classes_end');
@@ -281,7 +281,7 @@
 					show_404("{$class}/{$method}");
 				}
 
-				include_once(APPPATH.'controllers/'.$class.'.php');
+				include_once APPPATH.'controllers/'.$class.'.php';
 			}
 		}
 		else
@@ -343,7 +343,7 @@
 						show_404("{$class}/{$method}");
 					}
 
-					include_once(APPPATH.'controllers/'.$class.'.php');
+					include_once APPPATH.'controllers/'.$class.'.php';
 					unset($CI);
 					$CI = new $class();
 				}

@@ -142,7 +142,7 @@ if ( ! function_exists('load_class'))
 
 				if (class_exists($name) === FALSE)
 				{
-					require($path.$directory.'/'.$class.'.php');
+					require $path.$directory.'/'.$class.'.php';
 				}
 
 				break;
@@ -156,7 +156,7 @@ if ( ! function_exists('load_class'))
 
 			if (class_exists($name) === FALSE)
 			{
-				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php');
+				require APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php';
 			}
 		}
 
@@ -232,7 +232,7 @@ if ( ! function_exists('get_config'))
 			trigger_error('The configuration file does not exist.');
 		}
 
-		require($file_path);
+		require $file_path;
 
 		// Does the $config array exist in the file?
 		if ( ! isset($config) OR ! is_array($config))

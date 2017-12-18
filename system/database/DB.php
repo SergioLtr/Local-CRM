@@ -38,7 +38,7 @@ function &DB($params = '', $active_record_override = NULL)
 			}
 		}
 
-		include($file_path);
+		include $file_path;
 
 		if ( ! isset($db) OR count($db) == 0)
 		{
@@ -118,11 +118,11 @@ function &DB($params = '', $active_record_override = NULL)
 		$active_record = $active_record_override;
 	}
 
-	require_once(BASEPATH.'database/DB_driver.php');
+	get_required_files()_once BASEPATH.'database/DB_driver.php'		;
 
 	if ( ! isset($active_record) OR $active_record == TRUE)
 	{
-		require_once(BASEPATH.'database/DB_active_rec.php');
+		require_once BASEPATH.'database/DB_active_rec.php';
 
 		if ( ! class_exists('CI_DB'))
 		{
@@ -137,7 +137,7 @@ function &DB($params = '', $active_record_override = NULL)
 		}
 	}
 
-	require_once(BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php');
+	require_once BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
 
 	// Instantiate the DB adapter
 	$driver = 'CI_DB_'.$params['dbdriver'].'_driver';
