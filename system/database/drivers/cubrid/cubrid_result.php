@@ -121,7 +121,7 @@ class CI_DB_cubrid_result extends CI_DB_result {
 			if (is_resource($res))
 			{
 				cubrid_close_request($res);
-				$this->result_id = FALSE;
+				$this->result_id = false;
 			}
 
 			$retval[] = $F;
@@ -144,7 +144,7 @@ class CI_DB_cubrid_result extends CI_DB_result {
 			preg_match('/Resource id #/', strval($this->result_id)))
 		{
 			cubrid_close_request($this->result_id);
-			$this->result_id = FALSE;
+			$this->result_id = false;
 		}
 	}
 

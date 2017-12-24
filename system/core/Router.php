@@ -107,7 +107,7 @@ class CI_Router {
 		// since URI segments are more search-engine friendly, but they can optionally be used.
 		// If this feature is enabled, we will gather the directory/class/method a little differently
 		$segments = array();
-		if ($this->config->item('enable_query_strings') === TRUE AND isset($_GET[$this->config->item('controller_trigger')]))
+		if ($this->config->item('enable_query_strings') === true and isset($_GET[$this->config->item('controller_trigger')]))
 		{
 			if (isset($_GET[$this->config->item('directory_trigger')]))
 			{
@@ -129,7 +129,7 @@ class CI_Router {
 		}
 
 		// Load the routes.php file.
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
+		if (defined('ENVIRONMENT') and is_file(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
 		{
 			include APPPATH.'config/'.ENVIRONMENT.'/routes.php';
 		}
@@ -138,12 +138,12 @@ class CI_Router {
 			include APPPATH.'config/routes.php';
 		}
 
-		$this->routes = ( ! isset($route) OR ! is_array($route)) ? array() : $route;
+		$this->routes = ( ! isset($route) or ! is_array($route)) ? array() : $route;
 		unset($route);
 
 		// Set the default controller so we can display it in the event
 		// the URI doesn't correlated to a valid controller.
-		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
+		$this->default_controller = ( ! isset($this->routes['default_controller']) or $this->routes['default_controller'] == '') ? false : strtolower($this->routes['default_controller']);
 
 		// Were there any query string segments?  If so, we'll validate them and bail out since we're done.
 		if (count($segments) > 0)
@@ -183,12 +183,12 @@ class CI_Router {
 	 */
 	function _set_default_controller()
 	{
-		if ($this->default_controller === FALSE)
+		if ($this->default_controller === false)
 		{
 			show_error("Unable to determine what should be displayed. A default route has not been specified in the routing file.");
 		}
 		// Is the method being specified?
-		if (strpos($this->default_controller, '/') !== FALSE)
+		if (strpos($this->default_controller, '/') !== false)
 		{
 			$x = explode('/', $this->default_controller);
 
@@ -305,7 +305,7 @@ class CI_Router {
 			else
 			{
 				// Is the method being specified in the route?
-				if (strpos($this->default_controller, '/') !== FALSE)
+				if (strpos($this->default_controller, '/') !== false)
 				{
 					$x = explode('/', $this->default_controller);
 
@@ -381,7 +381,7 @@ class CI_Router {
 			if (preg_match('#^'.$key.'$#', $uri))
 			{
 				// Do we have a back-reference?
-				if (strpos($val, '$') !== FALSE AND strpos($key, '(') !== FALSE)
+				if (strpos($val, '$') !== false and strpos($key, '(') !== false)
 				{
 					$val = preg_replace('#^'.$key.'$#', $val, $uri);
 				}
@@ -502,7 +502,7 @@ class CI_Router {
 			$this->set_directory($routing['directory']);
 		}
 
-		if (isset($routing['controller']) AND $routing['controller'] != '')
+		if (isset($routing['controller']) and $routing['controller'] != '')
 		{
 			$this->set_class($routing['controller']);
 		}

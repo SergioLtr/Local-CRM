@@ -75,7 +75,7 @@ class Orders_model extends Crud_model {
      */
     public function delete($id)
     {
-        if ($id != NULL)
+        if ($id != null)
         {
             $this->db->where('id', $id);
             $this->db->delete($this->table);

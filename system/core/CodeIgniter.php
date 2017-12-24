@@ -36,12 +36,12 @@
 	define('CI_VERSION', '2.1.0');
 
 /**
- * CodeIgniter Branch (Core = TRUE, Reactor = FALSE)
+ * CodeIgniter Branch (Core = true, Reactor = false)
  *
  * @var boolean
  *
  */
-	define('CI_CORE', FALSE);
+	define('CI_CORE', false);
 
 /*
  * ------------------------------------------------------
@@ -55,7 +55,7 @@
  *  Load the framework constants
  * ------------------------------------------------------
  */
-	if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/constants.php'))
+	if (defined('ENVIRONMENT') and file_exists(APPPATH.'config/'.ENVIRONMENT.'/constants.php'))
 	{
 		require APPPATH.'config/'.ENVIRONMENT.'/constants.php';
 	}
@@ -92,7 +92,7 @@
  * Note: Since the config file data is cached it doesn't
  * hurt to load it here.
  */
-	if (isset($assign_to_config['subclass_prefix']) AND $assign_to_config['subclass_prefix'] != '')
+	if (isset($assign_to_config['subclass_prefix']) and $assign_to_config['subclass_prefix'] != '')
 	{
 		get_config(array('subclass_prefix' => $assign_to_config['subclass_prefix']));
 	}
@@ -102,7 +102,7 @@
  *  Set a liberal script execution time limit
  * ------------------------------------------------------
  */
-	if (function_exists("set_time_limit") == TRUE AND ini_get("safe_mode") == 0)
+	if (function_exists("set_time_limit") == true and ini_get("safe_mode") == 0)
 	{
 		set_time_limit(300);
 	}
@@ -190,9 +190,9 @@
  *	Is there a valid cache file?  If so, we're done...
  * ------------------------------------------------------
  */
-	if ($EXT->_call_hook('cache_override') === FALSE)
+	if ($EXT->_call_hook('cache_override') === false)
 	{
-		if ($OUT->_display_cache($CFG, $URI) == TRUE)
+		if ($OUT->_display_cache($CFG, $URI) == true)
 		{
 			trigger_error('');
 		}
@@ -265,8 +265,8 @@
 	$method = $RTR->fetch_method();
 
 	if ( ! class_exists($class)
-		OR strncmp($method, '_', 1) == 0
-		OR in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
+		or strncmp($method, '_', 1) == 0
+		or in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
 		)
 	{
 		if ( ! empty($RTR->routes['404_override']))
@@ -326,7 +326,7 @@
 	}
 	else
 	{
-		// is_callable() returns TRUE on some versions of PHP 5 for private and protected
+		// is_callable() returns true on some versions of PHP 5 for private and protected
 		// methods, so we'll use this workaround for consistent behavior
 		if ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($CI))))
 		{
@@ -375,7 +375,7 @@
  *  Send the final rendered output to the browser
  * ------------------------------------------------------
  */
-	if ($EXT->_call_hook('display_override') === FALSE)
+	if ($EXT->_call_hook('display_override') === false)
 	{
 		$OUT->_display();
 	}
@@ -392,7 +392,7 @@
  *  Close the DB connection if one exists
  * ------------------------------------------------------
  */
-	if (class_exists('CI_DB') AND isset($CI->db))
+	if (class_exists('CI_DB') and isset($CI->db))
 	{
 		$CI->db->close();
 	}
